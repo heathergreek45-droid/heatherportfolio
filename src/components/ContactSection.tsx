@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Linkedin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, Github, Send } from "lucide-react";
 import { useState } from "react";
 
 const contactInfo = [
@@ -7,6 +7,7 @@ const contactInfo = [
   { icon: Phone, title: "Phone", value: "069 236 1759", href: "tel:0692361759" },
   { icon: MapPin, title: "Address", value: "39 Anemone Street, Ravensmead" },
   { icon: Linkedin, title: "LinkedIn", value: "linkedin.com/in/heather-greek", href: "https://linkedin.com/in/heather-greek-939b18228" },
+  { icon: Github, title: "GitHub", value: "heathergreek45-droid", href: "https://github.com/heathergreek45-droid" },
 ];
 
 const ContactSection = () => {
