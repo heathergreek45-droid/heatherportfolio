@@ -8,7 +8,6 @@ const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
@@ -51,7 +50,7 @@ const HeroSection = () => {
         >
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-primary-foreground px-8 py-3 rounded-lg font-medium transition-colors"
+            className="inline-flex items-center gap-2 bg-gradient-theme hover:opacity-90 text-primary-foreground px-8 py-3 rounded-lg font-medium transition-opacity"
           >
             Get in Touch
           </a>

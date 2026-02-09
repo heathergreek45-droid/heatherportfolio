@@ -19,7 +19,7 @@ const AboutSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-heading text-4xl font-bold text-foreground mb-4">
-            About <span className="text-primary">Me</span>
+            About <span className="text-gradient">Me</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             I'm a passionate web developer who loves turning ideas into reality through code.
@@ -37,8 +37,8 @@ const AboutSection = () => {
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="bg-card border border-border rounded-xl p-8 text-center hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
             >
-              <div className="w-14 h-14 mx-auto mb-5 rounded-lg bg-primary/10 flex items-center justify-center">
-                <item.icon className="text-primary" size={28} />
+              <div className="w-14 h-14 mx-auto mb-5 rounded-lg bg-gradient-theme flex items-center justify-center">
+                <item.icon className="text-primary-foreground" size={28} />
               </div>
               <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{item.title}</h3>
               <p className="text-muted-foreground text-sm">{item.desc}</p>
