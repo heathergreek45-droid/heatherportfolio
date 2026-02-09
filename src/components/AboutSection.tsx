@@ -24,6 +24,13 @@ const AboutSection = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             I'm a passionate web developer who loves turning ideas into reality through code.
             I focus on building responsive websites and web applications that deliver great user experiences.
+            I enjoy learning new technologies and I'm always open to expanding my skills. I'm a fast learner,
+            highly motivated, and I adapt quickly to new challenges.
+          </p>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg mt-4">
+            I take pride in writing clean, efficient code and solving problems creatively. I'm detail-oriented,
+            reliable, and I work well both independently and as part of a team. My goal is to continue growing
+            as a developer while creating modern, functional, and user-friendly digital solutions.
           </p>
         </motion.div>
 
