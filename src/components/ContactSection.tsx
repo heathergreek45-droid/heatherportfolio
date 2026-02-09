@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, Send } from "lucide-react";
 import { useState } from "react";
+
+const contactInfo = [
+  { icon: Mail, title: "Email", value: "heathergreek45@gmail.com", href: "mailto:heathergreek45@gmail.com" },
+  { icon: Phone, title: "Phone", value: "069 236 1759", href: "tel:0692361759" },
+  { icon: MapPin, title: "Address", value: "39 Anemone Street, Ravensmead" },
+  { icon: Linkedin, title: "LinkedIn", value: "linkedin.com/in/heather-greek", href: "https://linkedin.com/in/heather-greek-939b18228" },
+];
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -21,8 +28,8 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-heading text-4xl font-bold text-foreground mb-4">
-            Get in <span className="text-primary">Touch</span>
+          <h2 className="font-heading text-4xl font-bold mb-4">
+            Get in <span className="text-gradient">Touch</span>
           </h2>
           <p className="text-muted-foreground text-lg">Have a project in mind? Let's talk!</p>
         </motion.div>
@@ -35,24 +42,23 @@ const ContactSection = () => {
             transition={{ duration: 0.5 }}
             className="space-y-6"
           >
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                <Mail className="text-primary" size={22} />
+            {contactInfo.map((item) => (
+              <div key={item.title} className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg bg-gradient-theme flex items-center justify-center shrink-0">
+                  <item.icon className="text-primary-foreground" size={22} />
+                </div>
+                <div>
+                  <h3 className="font-heading font-semibold text-foreground">{item.title}</h3>
+                  {item.href ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="text-muted-foreground text-sm">{item.value}</p>
+                  )}
+                </div>
               </div>
-              <div>
-                <h3 className="font-heading font-semibold text-foreground">Email</h3>
-                <p className="text-muted-foreground text-sm">hello@heathergreek.dev</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                <MapPin className="text-primary" size={22} />
-              </div>
-              <div>
-                <h3 className="font-heading font-semibold text-foreground">Location</h3>
-                <p className="text-muted-foreground text-sm">Available for remote work</p>
-              </div>
-            </div>
+            ))}
           </motion.div>
 
           <motion.form
@@ -63,28 +69,10 @@ const ContactSection = () => {
             transition={{ duration: 0.5 }}
             className="space-y-5"
           >
-            <input
-              type="text"
-              placeholder="Your Name"
-              required
-              className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              required
-              className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
-            />
-            <textarea
-              placeholder="Your Message"
-              rows={4}
-              required
-              className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition resize-none"
-            />
-            <button
-              type="submit"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-primary-foreground px-8 py-3 rounded-lg font-medium transition-colors w-full justify-center"
-            >
+            <input type="text" placeholder="Your Name" required className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition" />
+            <input type="email" placeholder="Your Email" required className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition" />
+            <textarea placeholder="Your Message" rows={4} required className="w-full px-4 py-3 rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition resize-none" />
+            <button type="submit" className="inline-flex items-center gap-2 bg-gradient-theme hover:opacity-90 text-primary-foreground px-8 py-3 rounded-lg font-medium transition-opacity w-full justify-center">
               {submitted ? "Sent!" : "Send Message"}
               <Send size={18} />
             </button>
