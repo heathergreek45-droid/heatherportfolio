@@ -7,12 +7,14 @@ const projects = [
     description: "A project submission system for organizing and uploading project files efficiently.",
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/heathergreek45-droid/Submitprojectfiles",
+    live: "https://heathergreek45-droid.github.io/Submitprojectfiles/",
   },
   {
     title: "Heather's Calculator",
     description: "A clean, functional calculator application built from scratch with a modern interface.",
     tags: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/heathergreek45-droid/heatherscalculator",
+    live: "https://heathergreek45-droid.github.io/heatherscalculator/",
   },
 ];
 
@@ -61,6 +63,17 @@ const ProjectsSection = () => {
                 ))}
               </div>
               <div className="flex gap-4">
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-primary hover:text-accent transition-colors font-medium"
+                  >
+                    <ExternalLink size={18} />
+                    View Live
+                  </a>
+                )}
                 {project.github && (
                   <a
                     href={project.github}
