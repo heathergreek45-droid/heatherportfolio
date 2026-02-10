@@ -3,22 +3,16 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "Portfolio Website",
-    description: "A responsive personal portfolio built with React, TypeScript, and Tailwind CSS to showcase my skills and experience.",
-    tags: ["React", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/heathergreek45-droid",
+    title: "Submit Project Files",
+    description: "A project submission system for organizing and uploading project files efficiently.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/heathergreek45-droid/Submitprojectfiles",
   },
   {
-    title: "Weather App",
-    description: "A weather application that fetches real-time data from a public API and displays forecasts with a clean, modern UI.",
-    tags: ["JavaScript", "API", "CSS3"],
-    github: "https://github.com/heathergreek45-droid",
-  },
-  {
-    title: "Task Manager",
-    description: "A full-featured task management app with CRUD operations, local storage persistence, and drag-and-drop functionality.",
-    tags: ["React", "HTML5", "CSS3"],
-    github: "https://github.com/heathergreek45-droid",
+    title: "Heather's Calculator",
+    description: "A clean, functional calculator application built from scratch with a modern interface.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/heathergreek45-droid/heatherscalculator",
   },
 ];
 
