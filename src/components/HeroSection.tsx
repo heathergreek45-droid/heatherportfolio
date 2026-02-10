@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import heatherPhoto from "@/assets/heather-greek.jpg";
 
 const HeroSection = () => {
   return (
@@ -15,6 +16,19 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-foreground/60" />
 
       <div className="relative z-10 text-center px-6 max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="mb-6"
+        >
+          <img
+            src={heatherPhoto}
+            alt="Heather Greek"
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto border-4 border-accent shadow-lg"
+          />
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
