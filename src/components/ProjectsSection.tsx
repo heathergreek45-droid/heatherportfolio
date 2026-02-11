@@ -26,20 +26,6 @@ const projects = [
     tags: ["Figma", "UI/UX", "AI"],
     live: "https://www.figma.com/proto/thTajjR3DACaJFciK3z9zz/AI4nEye?node-id=1-2&starting-point-node-id=1%3A2",
   },
-  {
-    title: "Submit Project Files",
-    description: "A project submission system for organizing and uploading project files efficiently.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/heathergreek45-droid/Submitprojectfiles",
-    live: "https://heathergreek45-droid.github.io/Submitprojectfiles/",
-  },
-  {
-    title: "Heather's Calculator",
-    description: "A clean, functional calculator application built from scratch with a modern interface.",
-    tags: ["HTML", "CSS", "JavaScript"],
-    github: "https://github.com/heathergreek45-droid/heatherscalculator",
-    live: "https://heathergreek45-droid.github.io/heatherscalculator/",
-  },
 ];
 
 const ProjectsSection = () => {
@@ -92,20 +78,14 @@ const ProjectsSection = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.open(project.live, '_blank', 'noopener,noreferrer');
+                    }}
                     className="inline-flex items-center gap-1.5 text-sm text-primary hover:text-accent transition-colors font-medium"
                   >
                     <ExternalLink size={18} />
                     View Live
-                  </a>
-                )}
-                {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Github size={20} />
                   </a>
                 )}
               </div>
