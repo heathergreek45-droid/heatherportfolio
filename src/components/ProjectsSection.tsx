@@ -3,6 +3,30 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
+    title: "Nova Web Design",
+    description: "A modern, professional web design agency site with sleek visuals and responsive layouts.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    live: "https://novawebz.netlify.app/",
+  },
+  {
+    title: "AI Learning Machine",
+    description: "An AI-powered learning platform that helps users explore and understand artificial intelligence concepts.",
+    tags: ["AI", "Zapier", "Automation"],
+    live: "https://ai-concept-bot.zapier.app/Learning",
+  },
+  {
+    title: "Community Crime Watch",
+    description: "A community-driven crime reporting and awareness platform for safer neighborhoods.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    live: "https://jay-28070.github.io/Community-Crime-Watch/",
+  },
+  {
+    title: "AI Eye Health Analyzer",
+    description: "An AI-powered eye health analysis tool with an intuitive interface for preliminary screenings.",
+    tags: ["Figma", "UI/UX", "AI"],
+    live: "https://www.figma.com/proto/thTajjR3DACaJFciK3z9zz/AI4nEye?node-id=1-2&starting-point-node-id=1%3A2",
+  },
+  {
     title: "Submit Project Files",
     description: "A project submission system for organizing and uploading project files efficiently.",
     tags: ["HTML", "CSS", "JavaScript"],
