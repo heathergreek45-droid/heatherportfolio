@@ -25,7 +25,7 @@ const HeroSection = () => {
           <img
             src={heatherPhoto}
             alt="Heather Greek"
-            className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mx-auto border-4 border-accent shadow-lg"
+            className="w-44 h-44 md:w-56 md:h-56 rounded-full object-cover mx-auto border-4 border-accent shadow-lg"
           />
         </motion.div>
 
