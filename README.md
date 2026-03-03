@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: heathergreekportfolio.netlify.app
+**URL**: (heathergreekportfolio.netlify.app)
 
 ## How can I edit this code?
 
