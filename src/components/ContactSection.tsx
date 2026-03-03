@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const contactInfo = [
   { icon: Mail, title: "Email", value: "heathergreek45@gmail.com", href: "mailto:heathergreek45@gmail.com" },
-  { icon: Linkedin, title: "LinkedIn", value: "linkedin.com/in/heather-greek", href: "https://linkedin.com/in/heather-greek-939b18228" },
+  { icon: Linkedin, title: "LinkedIn", value: "linkedin.com/in/heather-greek", href: "https://www.linkedin.com/in/heather-greek-939b18228/" },
   { icon: Github, title: "GitHub", value: "heathergreek45-droid", href: "https://github.com/heathergreek45-droid" },
 ];
 
