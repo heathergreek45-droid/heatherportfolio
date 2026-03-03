@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: [portfolio project](https://heathergreekportfolio.netlify.app/))
+**URL**: [Portfolio Project](https://heathergreekportfolio.netlify.app/)
 
 ## How can I edit this code?
 
@@ -10,7 +10,7 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](heathergreekportfolio.netlify.app) and start prompting.
+Simply visit the [Portfolio Project](heathergreekportfolio.netlify.app) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
@@ -62,7 +62,7 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](heathergreekportfolio.netlify.app) and click on Share -> Publish.
+Simply open [Portfolio Project](heathergreekportfolio.netlify.app) and click on Share -> Publish.
 
 ## Can I connect a custom domain to my Lovable project?
 
