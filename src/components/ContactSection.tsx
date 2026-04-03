@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Mail, Linkedin, Github, Send } from "lucide-react";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const contactInfo = [
   { icon: Mail, title: "Email", value: "heathergreek45@gmail.com", href: "mailto:heathergreek45@gmail.com" },
@@ -10,11 +12,41 @@ const contactInfo = [
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    if (sending) return;
+
+    const formData = new FormData(e.currentTarget);
+    const name = (formData.get("name") as string).trim();
+    const email = (formData.get("email") as string).trim();
+    const subject = (formData.get("subject") as string).trim();
+    const message = (formData.get("message") as string).trim();
+
+    if (!name || !email || !message) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    setSending(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: { name, email, subject: subject || "No subject", message },
+      });
+
+      if (error) throw error;
+
+      setSubmitted(true);
+      toast.success("Message sent successfully!");
+      (e.target as HTMLFormElement).reset();
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (err) {
+      console.error("Failed to send message:", err);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -72,13 +104,13 @@ const ContactSection = () => {
           >
             <h3 className="font-heading text-xl font-semibold text-foreground mb-2">Send a Message</h3>
             <div className="grid sm:grid-cols-2 gap-4">
-              <input type="text" placeholder="Full Name" required className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition text-sm" />
-              <input type="email" placeholder="Email Address" required className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition text-sm" />
+              <input name="name" type="text" placeholder="Full Name" required className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition text-sm" />
+              <input name="email" type="email" placeholder="Email Address" required className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition text-sm" />
             </div>
-            <input type="text" placeholder="Subject" className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition text-sm" />
-            <textarea placeholder="Your Message" rows={5} required className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition resize-none text-sm" />
-            <button type="submit" className="inline-flex items-center gap-2 bg-gradient-theme hover:opacity-90 text-primary-foreground px-8 py-3 rounded-lg font-medium transition-opacity text-sm">
-              {submitted ? "Message Sent!" : "Send Message"}
+            <input name="subject" type="text" placeholder="Subject" className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition text-sm" />
+            <textarea name="message" placeholder="Your Message" rows={5} required className="w-full px-4 py-3 rounded-lg bg-background border border-border text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition resize-none text-sm" />
+            <button type="submit" disabled={sending} className="inline-flex items-center gap-2 bg-gradient-theme hover:opacity-90 text-primary-foreground px-8 py-3 rounded-lg font-medium transition-opacity text-sm disabled:opacity-50">
+              {sending ? "Sending..." : submitted ? "Message Sent!" : "Send Message"}
               <Send size={16} />
             </button>
           </motion.form>
