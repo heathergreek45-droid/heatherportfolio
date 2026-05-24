@@ -86,8 +86,19 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
     font-family: var(--font-body);
+    background-image: url('/src/assets/page-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: hsl(var(--background));
+  }
+
+  /* Let the page background photo show through section backgrounds */
+  section {
+    background-color: transparent !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
