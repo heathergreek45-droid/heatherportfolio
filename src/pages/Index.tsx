@@ -7,10 +7,12 @@ import CertificationsSection from "@/components/CertificationsSection";
 import LanguagesSection from "@/components/LanguagesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <LanguageSwitcher />
       <HeroSection />
       <AboutSection />
       <SkillsSection />
