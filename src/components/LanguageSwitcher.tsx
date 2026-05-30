@@ -13,6 +13,9 @@ const languages = [
   { code: "ar", label: "العربية" },
   { code: "pt", label: "Português" },
   { code: "he", label: "עברית" },
+  { code: "es", label: "Español" },
+  { code: "fr", label: "Français" },
+  { code: "de", label: "Deutsch" },
 ];
 
 const LanguageSwitcher = () => {
