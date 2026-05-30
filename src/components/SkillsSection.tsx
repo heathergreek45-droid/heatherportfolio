@@ -6,7 +6,7 @@ const SkillsSection = () => {
   const { t } = useTranslation();
   const categories = [
     { icon: Monitor, title: t("skills.frontend"), skills: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Tailwind CSS", "Responsive Design"] },
-    { icon: Server, title: t("skills.backend"), skills: ["Node.js", "Python", "REST APIs", "Zapier Automation"] },
+    { icon: Server, title: t("skills.backend"), skills: ["Node.js", "Python", "Go", "Rust", "REST APIs", "Zapier Automation"] },
     { icon: Database, title: t("skills.database"), skills: ["SQL", "PostgreSQL", "Supabase"] },
     { icon: Wrench, title: t("skills.tools"), skills: ["Git", "GitHub", "VS Code", "Figma", "Netlify", "Vite", "AI Tools"] },
   ];
