@@ -19,14 +19,14 @@ const AboutSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="space-y-5">
+        <div className="max-w-3xl mx-auto space-y-12">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="space-y-5">
             <p className="text-muted-foreground text-lg leading-relaxed">{t("about.p1")}</p>
             <p className="text-muted-foreground text-lg leading-relaxed">{t("about.p2")}</p>
             <p className="text-muted-foreground text-lg leading-relaxed">{t("about.p3")}</p>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="grid gap-5">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="grid gap-5">
             {highlights.map((item) => (
               <div key={item.title} className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
                 <div className="w-12 h-12 rounded-lg bg-gradient-theme flex items-center justify-center shrink-0">
