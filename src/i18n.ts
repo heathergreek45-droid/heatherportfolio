@@ -27,6 +27,10 @@ const resources = {
         subtitle: "Technologies and tools I work with.",
         frontend: "Front-End", backend: "Back-End", database: "Database", tools: "Tools & Technologies",
       },
+      education: {
+        title: "Education",
+        subtitle: "My academic journey and qualifications.",
+      },
       projects: {
         my: "My", projects: "Projects",
         subtitle: "A selection of things I've built",
