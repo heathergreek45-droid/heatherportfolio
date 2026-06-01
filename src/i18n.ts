@@ -99,6 +99,10 @@ const resources = {
         subtitle: "Tegnologieë en gereedskap waarmee ek werk.",
         frontend: "Voorkant", backend: "Agterkant", database: "Databasis", tools: "Gereedskap & Tegnologieë",
       },
+      education: {
+        title: "Onderwys",
+        subtitle: "My akademiese reis en kwalifikasies.",
+      },
       projects: {
         my: "My", projects: "Projekte",
         subtitle: "'n Seleksie van dinge wat ek gebou het",
@@ -166,6 +170,10 @@ const resources = {
         my: "حزمتي", stack: "التقنية",
         subtitle: "التقنيات والأدوات التي أعمل بها.",
         frontend: "الواجهة الأمامية", backend: "الواجهة الخلفية", database: "قاعدة البيانات", tools: "الأدوات والتقنيات",
+      },
+      education: {
+        title: "التعليم",
+        subtitle: "رحلتي الأكاديمية ومؤهلاتي.",
       },
       projects: {
         my: "مشاريعي", projects: "",
@@ -235,6 +243,10 @@ const resources = {
         subtitle: "Tecnologias e ferramentas com as quais trabalho.",
         frontend: "Front-End", backend: "Back-End", database: "Banco de Dados", tools: "Ferramentas & Tecnologias",
       },
+      education: {
+        title: "Educação",
+        subtitle: "Minha jornada académica e qualificações.",
+      },
       projects: {
         my: "Meus", projects: "Projetos",
         subtitle: "Uma seleção de coisas que construí",
@@ -302,6 +314,10 @@ const resources = {
         my: "מחסנית", stack: "הטכנולוגיה שלי",
         subtitle: "טכנולוגיות וכלים שאני עובדת איתם.",
         frontend: "צד לקוח", backend: "צד שרת", database: "מסד נתונים", tools: "כלים וטכנולוגיות",
+      },
+      education: {
+        title: "חינוך",
+        subtitle: "המסע האקדמי וההכשרות שלי.",
       },
       projects: {
         my: "הפרויקטים", projects: "שלי",
@@ -371,6 +387,10 @@ const resources = {
         subtitle: "Tecnologías y herramientas con las que trabajo.",
         frontend: "Front-End", backend: "Back-End", database: "Base de Datos", tools: "Herramientas y Tecnologías",
       },
+      education: {
+        title: "Educación",
+        subtitle: "Mi trayectoria académica y calificaciones.",
+      },
       projects: {
         my: "Mis", projects: "Proyectos",
         subtitle: "Una selección de cosas que he construido",
@@ -439,6 +459,10 @@ const resources = {
         subtitle: "Technologies et outils avec lesquels je travaille.",
         frontend: "Front-End", backend: "Back-End", database: "Base de Données", tools: "Outils & Technologies",
       },
+      education: {
+        title: "Formation",
+        subtitle: "Mon parcours académique et mes qualifications.",
+      },
       projects: {
         my: "Mes", projects: "Projets",
         subtitle: "Une sélection de choses que j'ai construites",
@@ -506,6 +530,10 @@ const resources = {
         my: "Mein", stack: "Tech-Stack",
         subtitle: "Technologien und Werkzeuge, mit denen ich arbeite.",
         frontend: "Front-End", backend: "Back-End", database: "Datenbank", tools: "Werkzeuge & Technologien",
+      },
+      education: {
+        title: "Bildung",
+        subtitle: "Mein akademischer Werdegang und meine Qualifikationen.",
       },
       projects: {
         my: "Meine", projects: "Projekte",
