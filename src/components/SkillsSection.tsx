@@ -2,12 +2,19 @@ import { motion } from "framer-motion";
 import { Monitor, Server, Database, Wrench } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
+const skillColors: Record<string, string> = {
+  "C#": "bg-[#9B4F96]/15 text-[#9B4F96] border-[#9B4F96]/25",
+  "C++": "bg-[#00599C]/15 text-[#00599C] border-[#00599C]/25",
+  MongoDB: "bg-[#47A248]/15 text-[#47A248] border-[#47A248]/25",
+  Firebase: "bg-[#FFCA28]/15 text-[#FFA000] border-[#FFCA28]/25",
+};
+
 const SkillsSection = () => {
   const { t } = useTranslation();
   const categories = [
     { icon: Monitor, title: t("skills.frontend"), skills: ["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Tailwind CSS", "Responsive Design"] },
     { icon: Server, title: t("skills.backend"), skills: ["Node.js", "Python", "Go", "Rust", "C#", "C++", "REST APIs", "Zapier Automation"] },
-    { icon: Database, title: t("skills.database"), skills: ["SQL", "NoSQL", "PostgreSQL", "Supabase"] },
+    { icon: Database, title: t("skills.database"), skills: ["SQL", "PostgreSQL", "Supabase", "MongoDB", "Firebase"] },
     { icon: Wrench, title: t("skills.tools"), skills: ["Git", "GitHub", "VS Code", "Figma", "Netlify", "Vite", "AI Tools"] },
   ];
 
@@ -30,7 +37,7 @@ const SkillsSection = () => {
               <h3 className="font-heading text-lg font-semibold text-foreground mb-4">{cat.title}</h3>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
-                  <span key={skill} className="text-xs px-3 py-1.5 rounded-full bg-primary/10 text-primary font-medium">{skill}</span>
+                  <span key={skill} className={`text-xs px-3 py-1.5 rounded-full border font-medium ${skillColors[skill] ?? "bg-primary/10 text-primary border-transparent"}`}>{skill}</span>
                 ))}
               </div>
             </motion.div>
