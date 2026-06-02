@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
   { label: "Education", href: "#education" },
   { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
@@ -20,7 +21,7 @@ const Navbar = () => {
           Heather<span className="text-gradient">.</span>
         </a>
 
-        <ul className="hidden md:flex gap-8">
+        <ul className="hidden md:flex gap-8 items-center">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors font-medium text-sm">
@@ -28,6 +29,16 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center gap-2 bg-gradient-theme text-primary-foreground px-4 py-2 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
+            >
+              <Download size={14} />
+              Resume
+            </a>
+          </li>
         </ul>
 
         <button onClick={() => setOpen(!open)} className="md:hidden text-foreground" aria-label="Toggle menu">
@@ -44,6 +55,17 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href="/resume.pdf"
+              download
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center gap-2 bg-gradient-theme text-primary-foreground px-4 py-2 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
+            >
+              <Download size={14} />
+              Download Resume
+            </a>
+          </li>
         </ul>
       )}
     </nav>

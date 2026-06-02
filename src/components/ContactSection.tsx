@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { Mail, Linkedin, Github, Send, Download } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -77,6 +77,15 @@ const ContactSection = () => {
                 </div>
               </div>
             ))}
+
+            <a
+              href="/resume.pdf"
+              download
+              className="inline-flex items-center gap-2 bg-gradient-theme hover:opacity-90 text-primary-foreground px-6 py-3 rounded-lg font-medium transition-opacity text-sm mt-2"
+            >
+              <Download size={16} />
+              Download Resume
+            </a>
           </motion.div>
 
           <motion.form onSubmit={handleSubmit} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="md:col-span-3 bg-card border border-border rounded-xl p-8 space-y-5">
