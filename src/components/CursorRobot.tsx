@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import robotImg from "@/assets/robot-humanoid.png";
 
 type Props = {
@@ -6,15 +6,35 @@ type Props = {
 };
 
 /**
- * Photorealistic humanoid robot that tilts/leans toward the cursor.
- * Includes idle breathing, subtle head micro-movements, and eye blinks.
+ * Photorealistic humanoid robot that reacts to the cursor independently.
+ * Each robot has its own easing speed, idle rhythm, reaction lag and blink
+ * timing so the two never move in lockstep.
  */
 const CursorRobot = ({ side }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const targetRef = useRef({ x: 0, y: 0 });
   const [smooth, setSmooth] = useState({ x: 0, y: 0 });
-  const [idle, setIdle] = useState({ x: 0, y: 0 });
+  const [idle, setIdle] = useState({ x: 0, y: 0, breath: 0 });
   const [blink, setBlink] = useState(false);
+
+  // Per-instance "personality" — different easing, phase, sensitivity
+  const personality = useMemo(() => {
+    const isLeft = side === "left";
+    return {
+      // how fast the head catches up to the cursor (lower = more lag)
+      lerp: isLeft ? 0.07 : 0.045,
+      // idle sway frequencies & phase offsets (rad)
+      swayFreq: isLeft ? 0.6 : 0.85,
+      bobFreq: isLeft ? 1.0 : 1.3,
+      breathFreq: isLeft ? 0.9 : 1.15,
+      phase: isLeft ? 0 : Math.PI / 1.7,
+      // tilt sensitivity divisor (higher = more subtle)
+      tiltDiv: isLeft ? 95 : 110,
+      tiltMax: isLeft ? 7 : 6,
+      swayAmp: isLeft ? 1.2 : 1.5,
+      bobAmp: isLeft ? 0.7 : 1.0,
+    };
+  }, [side]);
 
   // Track cursor
   useEffect(() => {
@@ -25,7 +45,7 @@ const CursorRobot = ({ side }: Props) => {
     return () => window.removeEventListener("mousemove", handleMove);
   }, []);
 
-  // Smooth follow with easing (lerp) for natural tilt
+  // Smooth follow with per-robot easing
   useEffect(() => {
     let raf = 0;
     const tick = () => {
@@ -36,40 +56,46 @@ const CursorRobot = ({ side }: Props) => {
         const dx = targetRef.current.x - cx;
         const dy = targetRef.current.y - cy;
         setSmooth((prev) => ({
-          x: prev.x + (dx - prev.x) * 0.08,
-          y: prev.y + (dy - prev.y) * 0.08,
+          x: prev.x + (dx - prev.x) * personality.lerp,
+          y: prev.y + (dy - prev.y) * personality.lerp,
         }));
       }
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [personality.lerp]);
 
-  // Idle micro-movement (breathing / sway)
+  // Idle micro-movement — unique phase per robot
   useEffect(() => {
     let raf = 0;
-    const start = performance.now();
+    const start = performance.now() + Math.random() * 1000;
     const tick = (now: number) => {
       const t = (now - start) / 1000;
       setIdle({
-        x: Math.sin(t * 0.7) * 1.2,
-        y: Math.sin(t * 1.1) * 0.8,
+        x: Math.sin(t * personality.swayFreq + personality.phase) * personality.swayAmp,
+        y: Math.sin(t * personality.bobFreq + personality.phase * 1.3) * personality.bobAmp,
+        breath: Math.sin(t * personality.breathFreq + personality.phase) * 0.5,
       });
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, []);
+  }, [personality]);
 
-  // Random blink (every 3-6s)
+  // Random blink — independent per robot
   useEffect(() => {
     let timeout: number;
     const scheduleBlink = () => {
-      const delay = 3000 + Math.random() * 3000;
+      const delay = 2500 + Math.random() * 4500;
       timeout = window.setTimeout(() => {
         setBlink(true);
-        window.setTimeout(() => setBlink(false), 140);
+        window.setTimeout(() => setBlink(false), 110 + Math.random() * 80);
+        // occasional double-blink
+        if (Math.random() < 0.25) {
+          window.setTimeout(() => setBlink(true), 260);
+          window.setTimeout(() => setBlink(false), 380);
+        }
         scheduleBlink();
       }, delay);
     };
@@ -77,10 +103,11 @@ const CursorRobot = ({ side }: Props) => {
     return () => window.clearTimeout(timeout);
   }, []);
 
-  // Reduced sensitivity for natural feel
-  const tilt = Math.max(-7, Math.min(7, smooth.x / 90)) + idle.x * 0.4;
-  const headX = Math.max(-5, Math.min(5, smooth.x / 130)) + idle.x;
-  const headY = Math.max(-3, Math.min(3, smooth.y / 180)) + idle.y;
+  const tilt =
+    Math.max(-personality.tiltMax, Math.min(personality.tiltMax, smooth.x / personality.tiltDiv)) +
+    idle.x * 0.35;
+  const headX = Math.max(-5, Math.min(5, smooth.x / 140)) + idle.x;
+  const headY = Math.max(-3, Math.min(3, smooth.y / 190)) + idle.y;
 
   return (
     <div
@@ -89,11 +116,11 @@ const CursorRobot = ({ side }: Props) => {
         side === "left" ? "left-0 lg:left-4 xl:left-8" : "right-0 lg:right-4 xl:right-8"
       } z-0 w-[140px] md:w-[170px] lg:w-[230px] xl:w-[290px] opacity-80 md:opacity-100`}
       style={{
-        transform: `${side === "right" ? "scaleX(-1) " : ""}rotate(${
-          side === "right" ? -tilt : tilt
-        }deg) translate(${headX}px, ${headY}px)`,
+        transform: `${side === "right" ? "scaleX(-1) " : ""}rotate(${tilt}deg) translate(${headX}px, ${
+          headY + idle.breath
+        }px)`,
         transformOrigin: "bottom center",
-        transition: "transform 0.15s ease-out",
+        transition: "transform 0.12s ease-out",
         filter: "drop-shadow(0 20px 30px rgba(0,0,0,0.35))",
       }}
       aria-hidden="true"
@@ -105,7 +132,6 @@ const CursorRobot = ({ side }: Props) => {
           className="w-full h-auto select-none"
           draggable={false}
         />
-        {/* Eye-blink overlays — adjust top/left % to match robot eyes in the image */}
         <span
           className="absolute bg-black/85 rounded-full"
           style={{
