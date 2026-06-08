@@ -3,7 +3,7 @@ import { ArrowDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import heroBg from "@/assets/hero-bg.jpg";
 import heatherPhoto from "@/assets/heather-greek.jpg";
-import CursorRobot from "@/components/CursorRobot";
+
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -11,9 +11,6 @@ const HeroSection = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBg})` }} />
       <div className="absolute inset-0 bg-foreground/60" />
-
-      <CursorRobot side="left" />
-      <CursorRobot side="right" />
 
       <div className="relative z-10 text-center px-6 max-w-3xl">
         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }} className="mb-6">
