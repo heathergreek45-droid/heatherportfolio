@@ -34,7 +34,7 @@ const DownloadPortfolioButton = ({
           },
           jsPDF: { unit: "px", format: [target.scrollWidth, target.scrollHeight], orientation: "portrait" },
           pagebreak: { mode: ["css", "legacy"] },
-        })
+        } as any)
         .from(target)
         .save();
       toast.success("Portfolio downloaded");
