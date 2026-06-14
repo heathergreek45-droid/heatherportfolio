@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
+import DownloadPortfolioButton from "./DownloadPortfolioButton";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -30,20 +32,19 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-            <a
-              href="/resume.pdf"
-              download
-              className="inline-flex items-center gap-2 bg-gradient-theme text-primary-foreground px-4 py-2 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
-            >
-              <Download size={14} />
-              Resume
-            </a>
+            <ThemeToggle />
+          </li>
+          <li>
+            <DownloadPortfolioButton label="Portfolio" />
           </li>
         </ul>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden text-foreground" aria-label="Toggle menu">
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button onClick={() => setOpen(!open)} className="text-foreground" aria-label="Toggle menu">
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -56,15 +57,7 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-            <a
-              href="/resume.pdf"
-              download
-              onClick={() => setOpen(false)}
-              className="inline-flex items-center gap-2 bg-gradient-theme text-primary-foreground px-4 py-2 rounded-lg font-medium text-sm hover:opacity-90 transition-opacity"
-            >
-              <Download size={14} />
-              Download Resume
-            </a>
+            <DownloadPortfolioButton label="Download Portfolio" />
           </li>
         </ul>
       )}

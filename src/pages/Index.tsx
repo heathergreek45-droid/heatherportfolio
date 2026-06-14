@@ -15,16 +15,18 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <LanguageSwitcher />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <EducationSection />
-      <WorkExperienceSection />
-      <ProjectsSection />
-      <CertificationsSection />
-      <LanguagesSection />
-      <ContactSection />
-      <Footer />
+      <div id="portfolio-root">
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <EducationSection />
+        <WorkExperienceSection />
+        <ProjectsSection />
+        <CertificationsSection />
+        <LanguagesSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </div>
   );
 };
