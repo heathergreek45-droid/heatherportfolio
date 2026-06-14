@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
+import DownloadPortfolioButton from "./DownloadPortfolioButton";
 
 const navLinks = [
   { label: "Home", href: "#home" },
