@@ -12,7 +12,7 @@ const experiences = [
   {
     title: "Freelance Web Developer",
     company: "Self-Employed",
-    dates: "2024 – Present",
+    dates: "2025 – Present",
     description:
       "Designing and developing responsive websites and web applications for small clients and personal projects. Delivering clean, accessible UIs with a focus on performance, modern design standards, and reliable deployment workflows.",
   },
