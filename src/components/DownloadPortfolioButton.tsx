@@ -21,19 +21,28 @@ const DownloadPortfolioButton = ({
         return;
       }
       const html2pdf = (await import("html2pdf.js")).default;
+      const bg = getComputedStyle(document.body).backgroundColor || "#ffffff";
       await html2pdf()
         .set({
-          margin: 0,
+          margin: [10, 10, 10, 10],
           filename: "heather-greek-portfolio.pdf",
-          image: { type: "jpeg", quality: 0.95 },
+          image: { type: "jpeg", quality: 0.98 },
           html2canvas: {
             scale: 2,
             useCORS: true,
-            backgroundColor: getComputedStyle(document.body).backgroundColor || "#ffffff",
-            windowWidth: target.scrollWidth,
+            allowTaint: true,
+            backgroundColor: bg,
+            windowWidth: 1280,
+            scrollX: 0,
+            scrollY: 0,
           },
-          jsPDF: { unit: "px", format: [target.scrollWidth, target.scrollHeight], orientation: "portrait" },
-          pagebreak: { mode: ["css", "legacy"] },
+          jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait",
+            compress: true,
+          },
+          pagebreak: { mode: ["css", "legacy", "avoid-all"] },
         } as any)
         .from(target)
         .save();
