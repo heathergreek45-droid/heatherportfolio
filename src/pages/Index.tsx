@@ -10,11 +10,15 @@ import LanguagesSection from "@/components/LanguagesSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <LanguageSwitcher />
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeToggle />
+      </div>
       <div id="portfolio-root">
         <HeroSection />
         <AboutSection />
