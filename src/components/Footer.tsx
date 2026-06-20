@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import ThemeToggle from "./ThemeToggle";
 
 const Footer = () => {
   const { t } = useTranslation();
