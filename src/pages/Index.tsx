@@ -16,7 +16,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <LanguageSwitcher />
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 right-16 z-50">
         <ThemeToggle />
       </div>
       <div id="portfolio-root">
