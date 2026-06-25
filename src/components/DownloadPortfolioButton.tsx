@@ -56,7 +56,7 @@ const subsetPdf = async (fullPdfBytes: ArrayBuffer, start: number, end: number):
   const copied = await out.copyPages(src, indices);
   copied.forEach((p) => out.addPage(p));
   const bytes = await out.save();
-  return new Blob([bytes], { type: "application/pdf" });
+  return new Blob([bytes as BlobPart], { type: "application/pdf" });
 };
 
 const DownloadPortfolioButton = ({
